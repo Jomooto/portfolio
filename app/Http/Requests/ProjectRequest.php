@@ -26,8 +26,8 @@ class ProjectRequest extends FormRequest
         return [
             'user_id' => 'required',
             'name' => 'required',
-            'url' => 'required',
-            'url_picture' => 'required',
+            'url' => 'required|url',
+            'picture_url' => 'required|url',
         ];
     }
 }

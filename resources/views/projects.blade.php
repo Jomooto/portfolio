@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Projects</div>
 
@@ -34,7 +34,7 @@
                                     <input type="text" name="url" class="form-control" placeholder="url" value="{{old('url')}}">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="text" name="url_picture" class="form-control" placeholder="url picture" value="{{old('url_picture')}}">
+                                    <input type="text" name="picture_url" class="form-control" placeholder="picture_url" value="{{old('picture_url')}}">
                                 </div>
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -47,7 +47,9 @@
 
                     @foreach($projects as $project)
                         <div>
-                            <h1>{{ $project->name }}</h1>
+{{--                            {{ dd($project->get_name) }}--}}
+                            <h1>{{ $project->get_name }}</h1><h2>{{ $project->user->name }}</h2>
+                            <br>
                         </div>
                     @endforeach
                 </div>
