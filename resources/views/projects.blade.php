@@ -26,7 +26,7 @@
                         <form action="{{route('projects.store')}}" method="POST">
                         @csrf
                             <div class="form-row">
-                            <input type="text" name="user_id" value="{{Auth()->user()->id}}" hidden>
+{{--                            <input type="text" name="user_id" value="{{Auth()->user()->id}}" hidden>--}}
                             <div class="col-md-3">
                                 <input type="text" name="name" class="form-control" placeholder="name" value="{{old('name')}}">
                                 </div>

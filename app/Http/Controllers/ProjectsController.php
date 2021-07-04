@@ -13,11 +13,8 @@ class ProjectsController extends Controller
 
     public function store(Request $request){
         Project::create([
-            'user_id' => $request->user_id,
-            'name' => $request->name,
-            'url' => $request->url,
-            'picture_url' => $request->picture_url,
-        ]);
+                'user_id' => auth()->user()->id,
+            ] + $request->validated());
         return redirect('/');
     }
 }
