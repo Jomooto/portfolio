@@ -7,11 +7,11 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Project::class, function (Faker $faker) {
-    return [
+   return [
 //        'user_id' => factory(\App\User::class),
-        'user_id' => rand(1,4),
-        'name' => $faker->company(),
-        'url' => $faker->url(),
-        'picture_url' => $faker->imageUrl(),
-    ];
+    //    'user_id' => rand(1,4),
+       'name' => $faker->company(),
+       'url' => $faker->url(),
+       'picture_url' => $faker->imageUrl(),
+   ];
 });

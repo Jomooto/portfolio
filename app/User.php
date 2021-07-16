@@ -37,11 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Projects(){
-        return $this->hasMany(Project::class);
+    public function projects(){
+        return $this->morphMany(Project::class, 'projectable');
     }
 
     public function technologies(){
-        return $this->hasMany(Technology::class);
+        return $this->morphToMany(Technology::class, 'technologiable');
     }
+
 }

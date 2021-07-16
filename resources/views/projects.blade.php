@@ -45,6 +45,7 @@
 
                     @endif
 
+
                     @foreach($projects as $project)
                         <div>
 {{--                            {{ dd($project->get_name) }}--}}

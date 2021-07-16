@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use function GuzzleHttp\Promise\each;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,14 +13,51 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        
+        factory(App\Technology::class, 5)->create();
+        // factory(App\Project::class, 5)->create();
+
+
         \App\User::create([
             'name' => 'Jomoto',
             'email' => 'j@admin.com',
             'password' => bcrypt('12345678')
-        ]);
+        ])->each(function($user){
 
-        factory(App\User::class, 3)->create();
-        factory(App\Project::class, 20)->create();
+            $user->technologies()->attach($this->array(rand(1,5)));
+
+        });
+
+        factory(App\User::class, 3)->create()->each(function($user){
+
+
+            $projects_rand = rand(1, 5);
+
+            for($i=1; $i <= $projects_rand; $i++){
+
+                $user->projects()->save(factory(App\Project::class)->make())->each(function($project){
+                    $project->technologies()->attach($this->array(rand(1,5)));
+                });
+
+            }
+
+            $user->technologies()->attach($this->array(rand(1,5)));
+
+
+        });
+
+
+    }
+
+    public function array($max){
+
+        $values = [];
+
+        for($i=1; $i < $max; $i++){
+            $values[] = $i;
+        }
+
+        return $values;
+
     }
 }

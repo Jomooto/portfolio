@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('linkedin')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
