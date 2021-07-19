@@ -12,6 +12,6 @@ $factory->define(App\Project::class, function (Faker $faker) {
     //    'user_id' => rand(1,4),
        'name' => $faker->company(),
        'url' => $faker->url(),
-       'picture_url' => $faker->imageUrl(),
+       'picture_url' => $faker->imageUrl(90, 90),
    ];
 });

@@ -10,7 +10,8 @@ class ProjectsController extends Controller
 {
     public function index(){
         // $projects = Project::latest()->get();
-        $projects = Project::lastest()->get();
+        // $projects = Project::lastest()->get();
+        $projects = Project::get();
 //        $projects->technology();
         return view('projects', compact('projects'));
     }

@@ -32,13 +32,24 @@ class DatabaseSeeder extends Seeder
 
 
             $projects_rand = rand(1, 5);
+            for($i=1; $i < $projects_rand; $i++){
 
-            for($i=1; $i <= $projects_rand; $i++){
+                $user->projects()->save(factory(App\Project::class)->make())
+                ->each(function($project){
 
-                $user->projects()->save(factory(App\Project::class)->make())->each(function($project){
+                    $projects = [];
+                    $projects [] = $project->id;
+                    if(in_array($project->id, $projects)){
+                        return;
+                    }
                     $project->technologies()->attach($this->array(rand(1,5)));
-                });
+                }
 
+                
+                
+            );
+            
+            
             }
 
             $user->technologies()->attach($this->array(rand(1,5)));
@@ -53,7 +64,7 @@ class DatabaseSeeder extends Seeder
 
         $values = [];
 
-        for($i=1; $i < $max; $i++){
+        for($i=1; $i <= $max; $i++){
             $values[] = $i;
         }
 

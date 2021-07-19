@@ -41,6 +41,10 @@ class User extends Authenticatable
         return $this->morphMany(Project::class, 'projectable');
     }
 
+    // public function technologiesthrow(){
+    //     return $this->hasManyThrough(Technology::class, Project::class);
+    // }
+
     public function technologies(){
         return $this->morphToMany(Technology::class, 'technologiable');
     }

@@ -18,8 +18,6 @@ class CreatetechnologiablesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('technology_id');
             $table->morphs('technologiable');
-        
-
             $table->foreign('technology_id')->references('id')->on('technologies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'ProjectsController@index')->name('projects.index');
+Route::get('/', 'UserController@index')->name('users.index');
 
-Route::post('project', 'ProjectsController@store')->name('projects.store');
+Route::get('/user/{id}', 'UserController@getProjects')->name('user');
+
+// Route::post('project', 'ProjectsController@store')->name('projects.store');
 
