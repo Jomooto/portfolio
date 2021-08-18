@@ -10,7 +10,7 @@
                 <a >{{ $project->url }}</a> <br>
                 <!-- <img >{{ $project->picture_url }}</a> <br> -->
                 <img src="{{ $project->picture_url }}">
-
+                
                 @foreach($project->technologies as $technology)
                     <a> {{ $technology->name }}</a> &nbsp;
                 @endforeach
