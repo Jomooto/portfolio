@@ -39,9 +39,9 @@ class DatabaseSeeder extends Seeder
 
                     $projects = [];
                     $projects [] = $project->id;
-                    if(in_array($project->id, $projects)){
-                        return;
-                    }
+                    // if(in_array($project->id, $projects)){
+                    //     return;
+                    // }
                     $project->technologies()->attach($this->array(rand(1,5)));
                 }
 
