@@ -13,7 +13,7 @@ class ProjectsController extends Controller
         // $projects = Project::lastest()->get();
         $projects = Project::get();
 //        $projects->technology();
-        return view('projects', compact('projects'));
+        return view('layouts.projects', compact('projects'));
     }
 
     public function store(Request $request){

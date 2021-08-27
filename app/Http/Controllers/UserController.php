@@ -15,11 +15,12 @@ class UserController extends Controller
 
     public function getProjects($id){
         
-        $users = User::find($id);
+        $user = User::find($id);
         
         // $projects = $users->projects;
-        $projects = $users->projects()->with('technologies')->get();
-        return view('projects', compact('projects'));
+        $projects = $user->projects()->with('technologies')->get();
+        return view('layouts.user', compact('projects', 'user'));
 
     }
+
 }

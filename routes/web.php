@@ -17,13 +17,15 @@ use App\Http\Controllers\UserController;
 //    return view('welcome');
 //});
 
-Auth::routes();
+'Auth'::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'UserController@index')->name('users.index');
 
 Route::get('/user/{id}', 'UserController@getProjects')->name('user');
+
+// Route::get('/user/{id}/data', 'UserController@getUserData')->name('user.data');
 
 // Route::post('project', 'ProjectsController@store')->name('projects.store');
 
