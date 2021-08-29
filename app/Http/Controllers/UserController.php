@@ -19,7 +19,8 @@ class UserController extends Controller
         
         // $projects = $users->projects;
         $projects = $user->projects()->with('technologies')->get();
-        return view('layouts.user', compact('projects', 'user'));
+        $technologies = $user->technologies()->get();
+        return view('layouts.user', compact('projects', 'user', 'technologies'));
 
     }
 

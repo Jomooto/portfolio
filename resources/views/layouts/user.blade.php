@@ -23,6 +23,24 @@
                     @include('layouts.projects')
                 </div> 
             </section>
+            <section>
+                <div class="col-12">
+                    
+                    @include('layouts.technologies')
+                </div> 
+            </section>
+            <section>
+                <div class="col-12">
+                    
+                    @include('layouts.contact')
+                </div> 
+            </section>
+            <section>
+                <div class="col-12 mx-auto pb-5 text-center">
+                    
+                    @include('layouts.footer')
+                </div> 
+            </section>
     
 </body>
 
