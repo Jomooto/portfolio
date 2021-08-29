@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index(){
 
         $users = User::latest()->get();
-        return view('users', compact('users'));
+        return view('layouts.users', compact('users'));
     }
 
     public function getProjects($id){

@@ -5,7 +5,7 @@
                 style="width: 50%;" class="mx-auto d-block">
             </div>
             <div class="col-md-6">
-                <p class="h3">Hello im a web developer i love php and javascript</p>
+                <p class="h3">Hello im a web developer</p>
             </div> 
         </div>  
     </div>  

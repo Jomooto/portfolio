@@ -1,4 +1,5 @@
 
+        
         <div class="container">
         <div class="row">
         @forelse($projects as $project)
@@ -22,5 +23,5 @@
                 @endforelse
             </div>
         </div>
-        
+    
     

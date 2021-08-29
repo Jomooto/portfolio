@@ -19,13 +19,14 @@
 
             <section>
                 <div class="col-12">
+                    
                     @include('layouts.projects')
                 </div> 
             </section>
     
 </body>
 
-
+<!-- TODO:create technologies, contact form and footer -->
 
     
 
