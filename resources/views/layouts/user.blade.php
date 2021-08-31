@@ -1,50 +1,44 @@
 <section class="col-md-12">
                 @include('layouts.head')
 </section> 
-<body class="bg-dark">
-    
-        <div class="container">
-            <div class="row">
-                <div class="col col-md-12 mb-5">
-                    @include('layouts.navbar')
-                </div>  
-            </div>
-        </div>
 
+<body class="bg-dark">
+
+            <section>
+                <div class="col col-md-12 my-5">
+                    @include('layouts.navbar')
+                </div> 
+            </section> 
             <section>
                 <div class="col-12 mt-5">
-                    @include('layouts.header')
+                    @yield('header')
                 </div> 
             </section>
 
             <section>
                 <div class="col-12">
                     
-                    @include('layouts.projects')
+                    @yield('projects')
                 </div> 
             </section>
             <section>
                 <div class="col-12">
                     
-                    @include('layouts.technologies')
+                        @yield('technologies')
                 </div> 
             </section>
             <section>
                 <div class="col-12">
                     
-                    @include('layouts.contact')
+                    @yield('contact')
                 </div> 
             </section>
             <section>
                 <div class="col-12 mx-auto pb-5 text-center">
                     
-                    @include('layouts.footer')
+                    @yield('footer')
                 </div> 
             </section>
     
 </body>
-
-<!-- TODO:create technologies, contact form and footer -->
-
-    
 

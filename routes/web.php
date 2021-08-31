@@ -25,6 +25,9 @@ Route::get('/', 'UserController@index')->name('users.index');
 
 Route::get('/user/{id}', 'UserController@getProjects')->name('user');
 
+
+
+
 // Route::get('/user/{id}/data', 'UserController@getUserData')->name('user.data');
 
 // Route::post('project', 'ProjectsController@store')->name('projects.store');

@@ -5,7 +5,7 @@
         @foreach($users as $user)
 
             <div>
-                <a href="{{ route('user', $user->id) }}">{{ $user->name }}</a>
+                <a class='btn btn-info d-block mb-2' href="{{ route('user', $user->id) }}">{{ $user->name }}</a>
             </div>
 
         @endforeach

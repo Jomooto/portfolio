@@ -1,6 +1,5 @@
-
-        
-        <div class="container">
+@section('projects')
+    <div class="container">
         <div class="row">
         @forelse($projects as $project)
                 <div class="col-md-4 my-5">
@@ -23,5 +22,6 @@
                 @endforelse
             </div>
         </div>
-    
+    @endsection
+
     
