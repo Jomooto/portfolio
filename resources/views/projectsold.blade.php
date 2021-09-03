@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- <div class="container">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Projects</div> -->
 
-                    <!-- <div class="card-body">
+                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
                     </div> -->
-                    <!-- @if(Auth()->user())
+                     @if(Auth()->user())
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -46,15 +46,15 @@
                     @endif -->
 
 
-                    <!-- @foreach($projects as $project)
+                   @foreach($projects as $project)
                         <div>
                             <h1>{{ $project->get_name }}</h1>
                         
                             <br>
                         </div>
                     @endforeach -->
-                <!-- </div>
+                </div>
             </div>
         </div>
-    </div> -->
+    </div>
 @endsection

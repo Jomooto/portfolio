@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
@@ -16,15 +18,17 @@ class UserController extends Controller
     public function getProjects($id){
         
         $user = User::find($id);
-        // $views = [
-        //     'layouts.header' => view('layouts.header', compact('header')),
-        //     'layouts.projects' => view('layouts.header', compact('projects')),
-        // ];
+        $id = $user->id;
         
-        // $projects = $users->projects;
         $projects = $user->projects()->with('technologies')->get();
+
+        // technologies2 are unassigned technologies
+        $technologies2 = Technology::whereDoesntHave('users', function(Builder $query) use(&$id){
+            $query->where('technologiable_id', '=', $id);
+        })->get();
+
         $technologies = $user->technologies()->get();
-        return view('layouts.header', compact('projects', 'user', 'technologies'));
+        return view('layouts.header', compact('projects', 'user', 'technologies', 'technologies2'));
 
     }
 

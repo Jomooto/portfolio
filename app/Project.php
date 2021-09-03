@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['user_id','name','url','picture_url'];
+    protected $fillable = ['user_id','name', 'url', 'git_url', 'picture_url'];
 
 
 

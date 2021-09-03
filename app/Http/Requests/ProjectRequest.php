@@ -25,8 +25,9 @@ class ProjectRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'url' => 'required|url',
-            'picture_url' => 'required|url',
+            'url' => 'url',
+            'git_url' => 'required|url',
+            'picture_url' => 'url',
         ];
     }
 }

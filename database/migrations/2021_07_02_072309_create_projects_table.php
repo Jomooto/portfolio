@@ -17,8 +17,9 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->morphs('projectable');
             $table->string('name');
-            $table->string('url');
-            $table->string('picture_url');
+            $table->string('url')->nullable();
+            $table->string('git_url');
+            $table->string('picture_url')->nullable();
             $table->timestamps();
 
         });

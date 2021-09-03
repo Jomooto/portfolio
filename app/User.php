@@ -50,3 +50,8 @@ class User extends Authenticatable
     }
 
 }
+
+// TODO:: edit projects
+// TODO:: edit technologies
+// TODO:: send email form
+// TODO:: estylize all site
