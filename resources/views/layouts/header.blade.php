@@ -22,12 +22,24 @@
                         <a >{{ $project->url }}</a> <br>
                         <img src="{{ $project->picture_url }}" style="width:30%">
 
+<!-- 
+                        <div class="d-inline pt-5"> -->
+                            <!-- @foreach($project->technologies as $technology)
+                                <button class="btn-info btn-sm"> {{-- $technology->name --}}</button>
+                            @endforeach -->
+                        <!-- </div> -->
+                        <button class="btn btn-warning btn-sm mx-auto" data-toggle="modal" data-target="#editProject{{ $project->id }}">
+                            Editar
+                        </button>
 
-                        <div class="d-inline pt-5">
-                            @foreach($project->technologies as $technology)
-                                <button class="btn-info btn-sm"> {{ $technology->name }}</button>
-                            @endforeach
-                        </div>
+                        @include('layouts.editProjectModal')
+
+                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal" data-target="#deleteProject{{ $project->id }}">
+                            Delete
+                        </button>
+
+                        @include('layouts.deleteProjectModal')
+                        
                     </div>
                 </div>
             @empty
@@ -43,7 +55,11 @@
             @include('layouts.projectsModal')
         </div>
     </div>
+
+
     @endsection
+
+    @include('layouts.technologiesTable')
 
 
     @section('technologies')
@@ -78,6 +94,9 @@
             </div>
         </div>
     @endsection
+
+
+    
 
     @section('contact')
         <div class="container">
@@ -125,4 +144,10 @@
         </footer>
     @endsection
 
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" ></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js" ></script> -->
+
+
+    
 

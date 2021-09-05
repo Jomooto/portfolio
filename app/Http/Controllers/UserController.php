@@ -26,6 +26,7 @@ class UserController extends Controller
         $technologies2 = Technology::whereDoesntHave('users', function(Builder $query) use(&$id){
             $query->where('technologiable_id', '=', $id);
         })->get();
+        
 
         $technologies = $user->technologies()->get();
         return view('layouts.header', compact('projects', 'user', 'technologies', 'technologies2'));

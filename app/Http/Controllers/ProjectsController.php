@@ -40,4 +40,25 @@ class ProjectsController extends Controller
         return Redirect::route('user', array($id));
 
     }
+
+    public function update(Request $request){
+        $Project = Project::find($request->id);
+        // dd($projectId->name);
+
+        $Project->update([
+            'name' => $request->name,
+            'url' => $request->url,
+            'git_url' => $request->git_url,
+            'picture_url' => $request->picture_url
+        ]);
+        return Redirect::route('user', array(Auth::id()));
+    }
+
+    public function destroy(Request $request){
+        // dd('here');
+
+        $Project = Project::find($request->id);
+        $Project->delete();
+        return Redirect::route('user', array(Auth::id()));
+    }
 }

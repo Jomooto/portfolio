@@ -51,7 +51,9 @@ class User extends Authenticatable
 
 }
 
-// TODO:: edit projects
+
+
+// TODO:: show and delete technologies
 // TODO:: edit technologies
 // TODO:: send email form
 // TODO:: estylize all site

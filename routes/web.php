@@ -32,6 +32,14 @@ Route::post('technologyAssociate', 'TechnologiesController@associate')->name('te
 
 Route::post('project', 'ProjectsController@store')->name('project.store');
 
+Route::get('project/{id}/edit', 'ProjectsController@edit')->name('project.edit');
+
+Route::delete('project/{id}/delete', 'ProjectsController@destroy')->name('project.destroy');
+
+Route::put('project/{id}/update', 'ProjectsController@update')->name('project.update');
+
+Route::get('technologies' , 'TechnologiesController@getTechnologies')->name('technologies@get');
+
 
 // Route::get('/user/{id}/data', 'UserController@getUserData')->name('user.data');
 
