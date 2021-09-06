@@ -34,6 +34,8 @@ class ProjectsController extends Controller
             'git_url' => $request->git_url,
             'picture_url' => $request->picture_url,
         ]);
+
+        
         
         $user->projects()->save($project);
 

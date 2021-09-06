@@ -29,6 +29,14 @@ Route::post('technology', 'TechnologiesController@store')->name('technology.stor
 
 Route::post('technologyAssociate', 'TechnologiesController@associate')->name('technology.associate');
 
+Route::delete('technology/{id}/delete', 'TechnologiesController@destroy')->name('technology.destroy');
+
+// Route::delete('technology/{id}/delete', function (){
+//     dd('llegue a las rutas');
+// })->name('technology.destroy');
+
+
+
 
 Route::post('project', 'ProjectsController@store')->name('project.store');
 
@@ -38,10 +46,13 @@ Route::delete('project/{id}/delete', 'ProjectsController@destroy')->name('projec
 
 Route::put('project/{id}/update', 'ProjectsController@update')->name('project.update');
 
-Route::get('technologies' , 'TechnologiesController@getTechnologies')->name('technologies@get');
+Route::put('technology/{id}/update', 'TechnologiesController@update')->name('technology.update');
+
+// Route::get('technologies' , 'TechnologiesController@getTechnologies')->name('technologies@get');
 
 
 // Route::get('/user/{id}/data', 'UserController@getUserData')->name('user.data');
 
 // Route::post('project', 'ProjectsController@store')->name('projects.store');
+
 

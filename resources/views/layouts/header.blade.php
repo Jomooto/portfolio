@@ -58,8 +58,14 @@
 
 
     @endsection
-
-    @include('layouts.technologiesTable')
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @include('layouts.technologiesTable')
+            </div>
+        </div>
+    </div>
+    
 
 
     @section('technologies')
@@ -143,11 +149,3 @@
             </div>
         </footer>
     @endsection
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" ></script>
-    <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js" ></script> -->
-
-
-    
-

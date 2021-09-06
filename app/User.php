@@ -53,7 +53,7 @@ class User extends Authenticatable
 
 
 
-// TODO:: show and delete technologies
-// TODO:: edit technologies
 // TODO:: send email form
+// TODO:: configurar los botones de la tabla y agregar el boton asociar
+// TODO:: congigurar las notificaciones
 // TODO:: estylize all site
