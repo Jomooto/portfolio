@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConctactFormMailable;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +33,6 @@ Route::post('technologyAssociate', 'TechnologiesController@associate')->name('te
 
 Route::delete('technology/{id}/delete', 'TechnologiesController@destroy')->name('technology.destroy');
 
-// Route::delete('technology/{id}/delete', function (){
-//     dd('llegue a las rutas');
-// })->name('technology.destroy');
-
-
-
 
 Route::post('project', 'ProjectsController@store')->name('project.store');
 
@@ -48,11 +44,17 @@ Route::put('project/{id}/update', 'ProjectsController@update')->name('project.up
 
 Route::put('technology/{id}/update', 'TechnologiesController@update')->name('technology.update');
 
-// Route::get('technologies' , 'TechnologiesController@getTechnologies')->name('technologies@get');
+Route::get('contactme', 'ContactController@index')->name('contact.send');
 
+Route::post('contactme', 'ContactController@store')->name('contact.store');
 
-// Route::get('/user/{id}/data', 'UserController@getUserData')->name('user.data');
+// Route::get('contactme' , function (){
 
-// Route::post('project', 'ProjectsController@store')->name('projects.store');
+//     $email = new ConctactFormMailable;
+
+//     Mail::to('joex45125@gmail.com')->send($email);
+//     return 'mensaje enviado';
+
+// });
 
 

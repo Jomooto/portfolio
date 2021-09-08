@@ -1,3 +1,5 @@
+@include('sweetalert::alert')
+
 <section class="col-md-12">
                 @include('layouts.head')
 </section> 
@@ -30,7 +32,7 @@
             <section>
                 <div class="col-12">
                     
-                    @yield('contact')
+                    @include('layouts.contactForm')
                 </div> 
             </section>
             <section>
@@ -40,5 +42,5 @@
                 </div> 
             </section>
     
+        
 </body>
-

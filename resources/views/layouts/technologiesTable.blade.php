@@ -19,10 +19,10 @@
         <table id="technologies">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>                    
-                    <th></th>
-                    <th></th>
+                    <th class="pl-4">Id</th>
+                    <th class="pl-4">Name</th>                    
+                    <th class="pl-4"></th>
+                    <th class="pl-4"></th>
                     
                 </tr>
             </thead>

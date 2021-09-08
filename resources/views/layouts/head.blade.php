@@ -12,6 +12,9 @@
         <!-- Scripts -->
         
         <script src="{{ asset('js/app.js') }}" defer></script>
+        
+        <!-- sweetalert -->
+        <!-- <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/theme-wordpress-admin.css" rel="stylesheet"> -->
      
 
         <!-- Fonts -->
