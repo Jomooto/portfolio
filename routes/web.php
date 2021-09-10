@@ -29,7 +29,9 @@ Route::get('/user/{id}', 'UserController@getProjects')->name('user');
 
 Route::post('technology', 'TechnologiesController@store')->name('technology.store');
 
-Route::post('technologyAssociate', 'TechnologiesController@associate')->name('technology.associate');
+Route::post('technologyAssociate/{id}', 'TechnologiesController@associate')->name('technology.associate');
+
+Route::post('technologyUnassociate/{id}', 'TechnologiesController@unassociate')->name('technology.unassociate');
 
 Route::delete('technology/{id}/delete', 'TechnologiesController@destroy')->name('technology.destroy');
 
@@ -46,7 +48,11 @@ Route::put('technology/{id}/update', 'TechnologiesController@update')->name('tec
 
 Route::get('contactme', 'ContactController@index')->name('contact.send');
 
-Route::post('contactme', 'ContactController@store')->name('contact.store');
+Route::post('contactmex', 'ContactController@store')->name('contact.store');
+
+
+// Route::resource('PortfolioData/{id}', 'PortfolioDataController');
+
 
 // Route::get('contactme' , function (){
 

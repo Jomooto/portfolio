@@ -23,7 +23,7 @@ class ConctactFormMailable extends Mailable
     public function __construct($contact)
     {
 
-        // dd($contacto);
+        
         $this->contact = $contact;
     }
 
@@ -34,6 +34,7 @@ class ConctactFormMailable extends Mailable
      */
     public function build()
     {
+        
         return $this->view('layouts.contactMe');
     }
 }

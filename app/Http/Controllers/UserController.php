@@ -26,12 +26,33 @@ class UserController extends Controller
         $technologies2 = Technology::whereDoesntHave('users', function(Builder $query) use(&$id){
             $query->where('technologiable_id', '=', $id);
         })->get();
+
+        // $technologies4 = Technology::whereRelation('users', 'technologiable_id', true)->get();
+
+        // $technologies4 = Technology::has('users', function(Builder $query) use(&$id){
+        //     $query->where('technologiable_id', '=', $id);
+        // })->get();
+
+        $technologies4 = Technology::whereHas('users', function(Builder $query) use(&$id){
+            $query->where('technologiable_id', '=', $id);
+        })->get();
+
+        // dd($technologies4);
+
         $technologies3 = Technology::all();
-        
+
+        $portfolioDatas = $user->portfolioData()->get();
+        // dd($projects->name);
 
         $technologies = $user->technologies()->get();
-        return view('layouts.header', compact('projects', 'user',
-         'technologies', 'technologies2', 'technologies3'));
+        return view('layouts.header', compact(
+            'projects',
+            'user',
+            'technologies',
+            'technologies2',
+            'technologies3',
+            'technologies4',
+            'portfolioDatas'));
 
     }
 

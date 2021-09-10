@@ -12,7 +12,7 @@
         </button>
       </div>
       <div class="modal-body pb-0">
-        <form action="{{ route('technology.associate') }}" method="POST">
+        <form action="{{-- route('technology.associate') --}}" method="POST">
             @csrf
             <div class="form-row">
             

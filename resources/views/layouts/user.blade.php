@@ -4,6 +4,7 @@
                 @include('layouts.head')
 </section> 
 
+
 <body class="bg-dark">
 
             <section>

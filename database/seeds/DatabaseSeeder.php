@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         
         factory(App\Technology::class, 5)->create();
         // factory(App\Project::class, 5)->create();
+        // factory(App\PortfolioData::class)->create();
 
 
         \App\User::create([
@@ -26,33 +27,30 @@ class DatabaseSeeder extends Seeder
 
             $user->technologies()->attach($this->array(rand(1,5)));
 
+            $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+
+            $this->projects($user);
+            
+            
+
         });
 
         factory(App\User::class, 3)->create()->each(function($user){
 
-
+            $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+            
             $projects_rand = rand(1, 5);
             for($i=1; $i < $projects_rand; $i++){
 
-                $user->projects()->save(factory(App\Project::class)->make())
-                ->each(function($project){
 
-                    $projects = [];
-                    $projects [] = $project->id;
-                    // if(in_array($project->id, $projects)){
-                    //     return;
-                    // }
-                    $project->technologies()->attach($this->array(rand(1,5)));
-                }
-
-                
-                
-            );
+                $this->projects($user);
             
             
             }
 
             $user->technologies()->attach($this->array(rand(1,5)));
+
+            
 
 
         });
@@ -70,5 +68,23 @@ class DatabaseSeeder extends Seeder
 
         return $values;
 
+    }
+
+
+    public function projects($user){
+        $user->projects()->save(factory(App\Project::class)->make())
+            ->each(function($project){
+
+                $projects = [];
+                $projects [] = $project->id;
+                // if(in_array($project->id, $projects)){
+                //     return;
+                // }
+                $project->technologies()->attach($this->array(rand(1,5)));
+            }
+
+            
+            
+        );
     }
 }

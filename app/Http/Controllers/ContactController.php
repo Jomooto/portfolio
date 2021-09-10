@@ -25,16 +25,18 @@ class ContactController extends Controller
             'email' => 'required|email',
             'message' => 'required|min:10',
         ]);
-
+        
         $email = new ConctactFormMailable($request->all());
-        try {
+        try{
+            
             Mail::to('joex45125@gmail.com')->send($email);
-            // dd($request->id);
-            return redirect()->route('user', $request->id)->with('success', 'Mensaje Enviado');
+            // dd('entre');
+            return redirect()->route('user', $request->id)->with('toast_success', 'Mensaje Enviado');
         
         }catch(\Exception $e) {
+            
             Log::error('message');
-            return redirect()->back()->with(['error' => 'Try later']);
+            return redirect()->back()->with('toast_error', 'Please tray later');
         } 
 
     }

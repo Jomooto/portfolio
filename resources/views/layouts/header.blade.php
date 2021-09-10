@@ -2,15 +2,20 @@
 
 
     @section('header')
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ $user->picture }}" alt="profile picture"
-                style="width: 50%;" class="mx-auto d-block">
+        @forelse($portfolioDatas as $portfolioData)
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ $portfolioData->picture }}" alt="profile picture"
+                    style="width: 50%;" class="mx-auto d-block">
+                </div>
+                <div class="col-md-6">
+                    <h1>{{$portfolioData->descriptionTitle}}</h1>
+                    <p class="h3">{{ $portfolioData->description }}</p>
+                </div>
             </div>
-            <div class="col-md-6">
-                <p class="h3">Hello im a web developer</p>
-            </div>
-        </div>
+        @empty
+
+        @endforelse
     @endsection
 
 
@@ -106,20 +111,20 @@
     
 
     @section('footer')
-        <footer class="container">
+        <div class="container">
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="#"><p class="h5">Linkedin</p></a>
+                <div class="col-12 col-md-6">
+                    <span><i class="fab fa-github fa-3x"></i></span>
+                    <a href="{{ $portfolioData->github }}"><p class="h5">GitHub</p></a>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-6">
+                    <span><i class="fab fa-linkedin fa-3x"></i></span>
+                    <a href="{{ $portfolioData->linkedin }}"><p class="h5">Linkedin</p></a>
+                </div>
+                <!-- <div class="col-12 col-md-4">
                     <span><i class="fab fa-linkedin"></i></span>
                     <a href="#"><p class="h5">Linkedin</p></a>
-                </div>
-                <div class="col-12 col-md-4">
-                    <span><i class="fab fa-linkedin"></i></span>
-                    <a href="#"><p class="h5">Linkedin</p></a>
-                </div>
+                </div> -->
             </div>
-        </footer>
+        </div>
     @endsection

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Technology;
-use Illuminate\Http\Request as orginalRequest;
+use yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\TechnologyRequest as Request;
 // use Datatables;
 // use yajra\Datatables\Facades\Datatables;
-use yajra\Datatables\Datatables;
+use Illuminate\Http\Request as orginalRequest;
+use App\Http\Requests\TechnologyRequest as Request;
 
 
 
@@ -51,40 +52,77 @@ class TechnologiesController extends Controller
         // dd($user);
         // $user->technology()->save($technology);
         // dd($request->id);
-        Technology::create(['name' => $request->name, 'icon_url' => $request->icon_url]);
-        return Redirect::route('user', array(Auth::id()));
+        try{
+            Technology::create(['name' => $request->name, 'icon_url' => $request->icon_url]);
+            return Redirect::route('user', array(Auth::id()))->with('toast_success', 'Tecnologia creada correctamente');;
+        }catch(\Exception $e){
+            Log::error('message');
+            return redirect()->back()->with('toast_error', 'Error al crear tecnologia <br> Por favor verifica los datos');
+        }
+
     }
 
     public function associate(OrginalRequest $orginalRequest){
-        // dd('llegue xxxx');
-        
-        // dd('llegue Aqui');
         // dd($RequestAsociate->id);
-        if(Auth::id()){
-            $user =Auth::id();
-            $GetUSer = User::find($user);
-            $GetUSer->technologies()->attach($orginalRequest->id);
-            return Redirect::route('user', array($user));
-            // dd('entre');
+        try{
+            if(Auth::id()){
+                $user =Auth::id();
+                $GetUSer = User::find($user);
+                $GetUSer->technologies()->attach($orginalRequest->id);
+                return Redirect::route('user', array($user))->with('toast_success', 'Tecnologia asociada correctamente');
+                // dd('entre');
+            }
+        }catch(\Exception $e){
+            Log::error('message');
+            return redirect()->back()->with('toast_error', 'Error al asociar tecnologia');
         }
-            
-        // return Redirect::route('user', array($user));
-        return Redirect::route('home');
+
+    }
+
+
+    public function unassociate(OrginalRequest $orginalRequest){
+        // dd($RequestAsociate->id);
+        try{
+            if(Auth::id()){
+                $user =Auth::id();
+                $GetUSer = User::find($user);
+                $GetUSer->technologies()->detach($orginalRequest->id);
+                return Redirect::route('user', array($user))->with('toast_success', 'Tecnologia desasociada correctamente');
+                // dd('entre');
+            }else{
+                return redirect()->back()->with('toast_error', 'Error al asociar tecnologia');
+            }
+        }catch(\Exception $e){
+            Log::error('message');
+            return redirect()->back()->with('toast_error', 'Error porfavor notifique al desarrollador');
+        }
 
     }
 
     public function destroy (OrginalRequest $orginalRequest){
+        // dd(Auth::id());
+        if(Auth::id() !== 1){
+            return back()->withInput()->with('toast_error', 'No estas autorizado');
+        }
 
         $Technology = Technology::find($orginalRequest->id);
         // dd(isset($Technology->relation));
         // dd(($Technology->users->count()));
-        if($Technology->users->count()){
-            $Technology->delete();
-            return Redirect::route('user', array(Auth::id()));
+        try{
+            if(!($Technology->users->count())){            
+                $Technology->delete();
+                return Redirect::route('user', array('1'))->with('toast_success', 'Tecnologia eliminada correctamente');
+            }else{
+                return back()->withInput()->with('toast_error', 'Error al eliminar tecnologia. <br> Por favor verifica las asociaciones');
+            }
+        }catch(\Exception $e){
+            Log::error('message');
+            return back()->withInput()->with('toast_error', 'Error al eliminar tecnologia. <br> Por favor comunicate a soporte');
         }
-        // dd('no entre');
         
-        return back()->withInput();
+        
+        
+        
 
     }
 }

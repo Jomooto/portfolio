@@ -14,11 +14,6 @@
 
                     <div class="form-group">
                     
-                        @error('name')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                        @enderror
                     
                     <input type="text" name="name" value="{{ old('name')}}" placeholder="Name" class="form-control">
                     </div>
@@ -27,22 +22,11 @@
                         
                     
                         
-                            @error('email')
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                         
                     
                         <input type="email" name="email" value="{{ old('email')}}" placeholder="Email" class="form-control">
                     </div>
                     <div class="form-group">
-                    
-                        @error('message')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                        @enderror
                     
                         <textarea name="message" id="message" value="{{ old('message')}}" cols="30" rows="10" placeholder="Message" class="form-control"></textarea>
                     </div>

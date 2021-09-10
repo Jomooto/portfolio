@@ -24,10 +24,10 @@ class TechnologyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'icon_url' => 'required| url',
-            'git_url' => 'url',
-            'picture_url' => 'url',
+            'name' => 'required|max:255',
+            'icon_url' => 'required|url|max:255',
+            'git_url' => 'url|max:255',
+            'picture_url' => 'url|max:255',
         ];
     }
 }

@@ -41,6 +41,9 @@ class User extends Authenticatable
         return $this->morphMany(Project::class, 'projectable');
     }
 
+    public function portfolioData(){
+        return $this->morphMany(PortfolioData::class, 'portfoliable');
+    }
     // public function technologiesthrow(){
     //     return $this->hasManyThrough(Technology::class, Project::class);
     // }
@@ -54,6 +57,6 @@ class User extends Authenticatable
 
 
 
-// TODO:: congigurar las notificaciones
+
 // TODO:: configurar los botones de la tabla y agregar el boton asociar
 // TODO:: estylize all site

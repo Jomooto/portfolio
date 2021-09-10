@@ -24,10 +24,10 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'url' => 'url',
-            'git_url' => 'required|url',
-            'picture_url' => 'url',
+            'name' => 'required|max:255',
+            'url' => 'url|max:255',
+            'git_url' => 'required|url|max:255',
+            'picture_url' => 'url|max:255',
         ];
     }
 }
