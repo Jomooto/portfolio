@@ -62,5 +62,3 @@ Route::post('contactmex', 'ContactController@store')->name('contact.store');
 //     return 'mensaje enviado';
 
 // });
-
-

@@ -16,7 +16,7 @@ class CreatePortfolioDataTable extends Migration
         Schema::create('portfolio_data', function (Blueprint $table) {
             $table->id();
             $table->morphs('portfoliable');
-            $table->string('portfolTitle')->nullable();           
+            $table->string('portfolTitle')->nullable();
             $table->string('picture')->nullable();
             $table->string('descriptionTitle')->nullable();
             $table->text('description')->nullable();

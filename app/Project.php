@@ -6,27 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['user_id','name', 'url', 'git_url', 'picture_url'];
+    protected $fillable = ['user_id', 'name', 'url', 'git_url', 'picture_url'];
 
 
 
-    public function projectable(){
+    public function projectable()
+    {
         return $this->morphTo();
     }
 
-    public function technologies(){
+    public function technologies()
+    {
         return $this->morphToMany(Technology::class, 'technologiable');
     }
 
-    public function getGetNameAttribute(){
+    public function getGetNameAttribute()
+    {
 
         return ucfirst($this->name);
     }
 
-    public function setNameAttribute($value){
+    public function setNameAttribute($value)
+    {
         $this->attributes['name'] = strtolower($value);
     }
-
 }
-
-

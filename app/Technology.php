@@ -9,16 +9,17 @@ class Technology extends Model
     // protected $fillable = ['name'];
 
     protected $guarded = [];
-    
-    public function index(){
 
+    public function index()
+    {
     }
-    public function users(){
+    public function users()
+    {
         return $this->morphedByMany(User::class, 'technologiable');
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->morphedByMany(Project::class, 'technologiable');
     }
-
 }
