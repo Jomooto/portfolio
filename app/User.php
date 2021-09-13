@@ -55,9 +55,6 @@ class User extends Authenticatable
     }
 }
 
-
-
-
-
-// TODO:: configurar los botones de la tabla y agregar el boton asociar
 // TODO:: estylize all site
+// TODO:: agregar ventana para editar datos del usuario
+

@@ -35,13 +35,15 @@
                                 <button class="btn-info btn-sm"> {{-- $technology->name --}}</button>
                             @endforeach -->
                         <!-- </div> -->
-                        <button class="btn btn-warning btn-sm mx-auto" data-toggle="modal" data-target="#editProject{{ $project->id }}">
+                        <button class="btn btn-warning btn-sm mx-auto" data-toggle="modal"
+                        data-target="#editProject{{ $project->id }}">
                             Editar
                         </button>
 
                         @include('layouts.editProjectModal')
 
-                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal" data-target="#deleteProject{{ $project->id }}">
+                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal"
+                        data-target="#deleteProject{{ $project->id }}">
                             Delete
                         </button>
 
@@ -56,7 +58,8 @@
                 </div> 
             </div>                           
             @endforelse
-                <button type="button" class="btn btn-primary mx-auto my-4" data-toggle="modal" data-target="#addProject">
+                <button type="button" class="btn btn-primary mx-auto my-4" data-toggle="modal"
+                data-target="#addProject">
                         Add Project
                 </button>
             @include('layouts.projectsModal')
@@ -120,11 +123,7 @@
                 <div class="col-12 col-md-6">
                     <span><i class="fab fa-linkedin fa-3x"></i></span>
                     <a href="{{ $portfolioData->linkedin }}"><p class="h5">Linkedin</p></a>
-                </div>
-                <!-- <div class="col-12 col-md-4">
-                    <span><i class="fab fa-linkedin"></i></span>
-                    <a href="#"><p class="h5">Linkedin</p></a>
-                </div> -->
+                </div>              
             </div>
         </div>
     @endsection
