@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use App\Project;
+
 use App\User;
 use App\Project;
 use Illuminate\Support\Facades\Log;
@@ -31,7 +31,6 @@ class ProjectsController extends Controller
 
         $id = Auth::id();
         $user = User::find($id);
-
         $project = new Project([
             'name' => $request->name,
             'url' => $request->url,

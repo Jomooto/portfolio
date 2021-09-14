@@ -45,7 +45,7 @@ class UserController extends Controller
         // dd($projects->name);
 
         $technologies = $user->technologies()->get();
-        return view('layouts.header', compact(
+        return view('layouts.body', compact(
             'projects',
             'user',
             'technologies',

@@ -43,18 +43,6 @@ class TechnologiesController extends Controller
 
     public function store(Request $request)
     {
-
-
-        // $request->validate([
-        //     'name' => 'required',
-        //     'icon_url' => 'required| url'
-        // ]);
-        // $user =  Auth::id();
-        // dd($user);
-        // $technology = new Technology(['name' => $request->name, 'icon_url' => $request->icon_url]);
-        // dd($user);
-        // $user->technology()->save($technology);
-        // dd($request->id);
         try {
             Technology::create(['name' => $request->name, 'icon_url' => $request->icon_url]);
             return Redirect::route('user', array(Auth::id()))->with('toast_success', 'Tecnologia creada correctamente');;

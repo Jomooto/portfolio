@@ -4,44 +4,19 @@
                 @include('layouts.head')
 </section> 
 
+<section>
+    <div class="col col-md-12 my-5">
+        @include('layouts.navbar')
+    </div> 
+</section> 
+<section>
+    <div class="col-12 mt-5">
+        @yield('body')
+    </div> 
+</section>
 
-<body class="bg-dark">
-
-            <section>
-                <div class="col col-md-12 my-5">
-                    @include('layouts.navbar')
-                </div> 
-            </section> 
-            <section>
-                <div class="col-12 mt-5">
-                    @yield('header')
-                </div> 
-            </section>
-
-            <section>
-                <div class="col-12">
-                    
-                    @yield('projects')
-                </div> 
-            </section>
-            <section>
-                <div class="col-12">
-                    
-                        @yield('technologies')
-                </div> 
-            </section>
-            <section>
-                <div class="col-12">
-                    
-                    @include('layouts.contactForm')
-                </div> 
-            </section>
-            <section>
-                <div class="col-12 mx-auto pb-5 text-center">
-                    
-                    @yield('footer')
-                </div> 
-            </section>
-    
-        
-</body>
+<section>
+    <div class="col col-md-12 my-5">
+        @include('layouts.footer')
+    </div> 
+</section> 

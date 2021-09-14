@@ -1,14 +1,14 @@
 @extends('layouts.user')
 
-
-    @section('header')
+<body class="container text-center text-light" style="background: linear-gradient(to bottom, #2a2a2a, #134074);">
+    @section('body')
         @forelse($portfolioDatas as $portfolioData)
             <div class="row">
                 <div class="col-md-6">
                     <img src="{{ $portfolioData->picture }}" alt="profile picture"
-                    style="width: 50%;" class="mx-auto d-block">
+                    style="width: 50%;" class="mx-auto d-block rounded">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 pt-4">
                     <h1>{{$portfolioData->descriptionTitle}}</h1>
                     <p class="h3">{{ $portfolioData->description }}</p>
                 </div>
@@ -16,18 +16,23 @@
         @empty
 
         @endforelse
-    @endsection
+    
 
 
-    @section('projects')
+    
     <div class="container">
         <div class="row">
+            <div class="text-center col-12">
+                <h1>Projects</h1>
+            </div>
             @forelse($projects as $project)
-                <div class="col-md-4 my-5">
-                    <div class="card bg-secondary" style="width:18rem; height:18rem;">
-                        <h1 >{{ $project->name }}</h1> <br>
-                        <a >{{ $project->url }}</a> <br>
-                        <img src="{{ $project->picture_url }}" style="width:30%">
+                <div class="col-md-4 my-5 text-white text-center">
+                    <div class="card bg-secondary" style="width:18rem; height:18rem">
+                        <h2>{{ $project->name }}</h2> <br>
+                        <a href="{{ url($project->url) }}">Project</a>
+                        
+                        <a href="{{ url($project->git_url)}}"> Git</a>
+                        <img class="rounded mx-auto d-block mt-1" src="{{ $project->picture_url }}" style="width:60%">
 
 <!-- 
                         <div class="d-inline pt-5"> -->
@@ -35,19 +40,20 @@
                                 <button class="btn-info btn-sm"> {{-- $technology->name --}}</button>
                             @endforeach -->
                         <!-- </div> -->
-                        <button class="btn btn-warning btn-sm mx-auto" data-toggle="modal"
-                        data-target="#editProject{{ $project->id }}">
+                        @if(Auth::id())
+                        <div class="inline">
+                        <button class="btn btn-warning btn-sm mx-auto my-2" data-toggle="modal" data-target="#editProject{{ $project->id }}">
                             Editar
                         </button>
 
                         @include('layouts.editProjectModal')
 
-                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal"
-                        data-target="#deleteProject{{ $project->id }}">
+                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal" data-target="#deleteProject{{ $project->id }}">
                             Delete
-                        </button>
-
+                        </button>                        
                         @include('layouts.deleteProjectModal')
+                        </div>                       
+                        @endif
                         
                     </div>
                 </div>
@@ -58,27 +64,33 @@
                 </div> 
             </div>                           
             @endforelse
-                <button type="button" class="btn btn-primary mx-auto my-4" data-toggle="modal"
-                data-target="#addProject">
-                        Add Project
-                </button>
-            @include('layouts.projectsModal')
+                @if(Auth::id())
+                    <button type="button" class="btn btn-primary mx-auto my-4 col-12" data-toggle="modal" data-target="#addProject">
+                            Add Project
+                    </button>
+                @include('layouts.projectsModal')
+                @endif
         </div>
     </div>
 
 
-    @endsection
-    <div class="container">
+    
+    
+    <!-- <div class="container">
         <div class="row">
-            <div class="col-12">
-                @include('layouts.technologiesTable')
-            </div>
+            <div class="col-12"> -->
+                @guest
+                @else
+                <h1 class="pt-5">Technologies Panel</h1>
+                    @include('layouts.technologiesTable')
+                @endguest
+            <!-- </div>
         </div>
-    </div>
+    </div> -->
     
 
 
-    @section('technologies')
+    
         <div class="container">
             <div class="row">
                 <div class="text-center col-12">
@@ -86,34 +98,28 @@
                 </div>
 
                 @forelse($technologies as $technology)
-                <div class="col-md-4 my-5">
+                <div class="col-md-4 my-5 d-flex">
                     <div class="card bg-secondary" style="width:18rem; height:18rem;">
                         <h1 >{{ $technology->name }}</h1> <br>
-                        <img src="{{ $technology->icon_url }}" style="width:30%">
+                        <img class="m-auto" src="{{ $technology->icon_url }}" style="width:70%">
                     </div>
                 </div>
                 @empty
                     <h1> Este usuario no tiene technologies</h1>
                 @endforelse
-            
-                <div class="mx-auto pb-4">
+                @if(Auth::id())
+                <div class="mx-auto pb-4 col-12">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTech">
                         Add Technology
                     </button>
                     @include('layouts.technologiesModal')
-
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#asociateTech">
-                        Asociate Technology
-                    </button>
-                    @include('layouts.associateTechModal')
                 </div>
+                @endif
             </div>
         </div>
-    @endsection
-
     
+        @include('layouts.contactForm')
 
-    @section('footer')
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -123,7 +129,12 @@
                 <div class="col-12 col-md-6">
                     <span><i class="fab fa-linkedin fa-3x"></i></span>
                     <a href="{{ $portfolioData->linkedin }}"><p class="h5">Linkedin</p></a>
-                </div>              
+                </div>
+                <!-- <div class="col-12 col-md-4">
+                    <span><i class="fab fa-linkedin"></i></span>
+                    <a href="#"><p class="h5">Linkedin</p></a>
+                </div> -->
             </div>
         </div>
     @endsection
+</body>
