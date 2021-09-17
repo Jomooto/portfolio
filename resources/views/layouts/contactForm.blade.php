@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="contact">
     <div class="row">
         <div class="text-center col-12 col-md-8 mx-auto mb-4">
             <h1>Contact Me</h1>

@@ -50,6 +50,8 @@ Route::get('contactme', 'ContactController@index')->name('contact.send');
 
 Route::post('contactmex', 'ContactController@store')->name('contact.store');
 
+Route::put('data/{id}/update', 'PortfolioDataController@update')->name('data.update');
+
 
 // Route::resource('PortfolioData/{id}', 'PortfolioDataController');
 

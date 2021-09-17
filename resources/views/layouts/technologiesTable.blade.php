@@ -1,13 +1,15 @@
 
 
     <div class="container">
-        <table id="technologies" class="text-center">
+        <table id="technologies">
             <thead>
                 <tr>
-                    <th class="pl-5">Id</th>
-                    <th class="pl-4">Name</th>                    
+                    <!-- <th class="pl-5">Id</th> -->
+                    <th class="pl-4 col-md-3">Name</th>  
+                    @if(Auth::id() == 1)      
                     <th class="pl-4"></th>
                     <th class="pl-4"></th>
+                    @endif()
                     <th class="pl-5"></th>                                        
                 </tr>
             </thead>
@@ -15,50 +17,48 @@
                 
                 @foreach($technologies3 as $tech)
                 <tr>
-                    <td class="text-center">{{ $tech->id }}</td>
-
-                    <td>{{ $tech->name }}</td>
                     
-                    <td>
-                        <button class="btn btn-warning btn-sm mx-auto mb-1" data-toggle="modal" data-target="#editTechnolgy{{ $tech->id }}">
-                            Edit
-                        </button>
-                        @include('layouts.editTechnolgyModal')                        
+
+                    <td class="col-md-3 font-weight-bold">{{ $tech->name }}</td>
+                    @if(Auth::id() == 1)   
+                        <td>
+                            <button class="btn btn-warning btn-lg mr-2 mb-1" data-toggle="modal" data-target="#editTechnolgy{{ $tech->id }}">
+                                Edit
+                            </button>
+                            @include('layouts.editTechnolgyModal')                        
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm mx-auto mb-1" data-toggle="modal" data-target="#deleteTechnology{{ $tech->id }}">
-                            Delete
-                        </button>
-                        @include('layouts.deleteTechnologyModal')                        
-                    </td> 
-                    <form action="{{ route('technology.associate', $tech->id)}}" method="POST">                    
-                        @csrf
-                        @foreach($technologies2 as $tech2)
-                            @if($tech2->id == $tech->id)                    
-                                <td class="pl-2">                        
-                                    <button class="btn btn-info btn-sm mx-auto mb-1" 
-                                    type="submit"
-                                    method="POST"
-                                    name="id" id="id" value="{{ $tech->id }}" >Asociar</button>
-                                </td>                                                            
+                            <button class="btn btn-danger btn-lg mr-2 mb-1" data-toggle="modal" data-target="#deleteTechnology{{ $tech->id }}">
+                                Delete
+                            </button>
+                            @include('layouts.deleteTechnologyModal')                 
+                    </td>
+                    @endif 
+                    @if($user->id == Auth::id())
+                        <td>
+                            @if(key_exists($tech->id, $asociadosArray))
+                                @php
+                                    $action = "Desasociar";
+                                    $method = 'technology.unassociate';
+                                    $color = 'warning';
+                                @endphp
+                            @else                    
+                                @php
+                                    $action = "Asociar";
+                                    $method = 'technology.associate';
+                                    $color = 'info';
+                                @endphp
                             @endif
-                        @endforeach 
-                    </form>
-                    <form action="{{ route('technology.unassociate', $tech->id)}}" method="POST"> 
-                    @csrf
-                        @foreach($technologies4 as $tech4)
-                            @if($tech4->id == $tech->id)                    
-                                <td class="pl-2">                        
-                                    <button class="btn btn-warning btn-sm mx-auto mb-1" 
-                                    type="submit"
-                                    method="POST"
-                                    name="id" id="id" value="{{ $tech->id }}">DesAsociar</button>
-                                </td>                                                            
-                            @endif
-                        @endforeach   
-                    </form>                         
-
-                    </tr>      
+                            <form class="mb-1" action="{{ route($method, $tech->id)}}" method="POST">
+                                @csrf
+                                <button class="btn btn-{{ $color }} btn-lg mr-2" 
+                                type="submit"
+                                name="id" id="id" value="{{ $tech->id }}" >{{ $action }}</button>
+                            </form>
+                        
+                        </td>
+                    @endif
+                </tr>      
                 @endforeach          
                 
                 

@@ -18,30 +18,30 @@ class UserController extends Controller
     public function getProjects($id){
         
         $user = User::find($id);
+        
+        if(!($user)){
+            return back()->withInput()->with('toast_error', 'Usuario no encontrado');
+        }
         $id = $user->id;
         
         $projects = $user->projects()->with('technologies')->get();
-
-        // technologies2 are unassigned technologies
-        $technologies2 = Technology::whereDoesntHave('users', function(Builder $query) use(&$id){
-            $query->where('technologiable_id', '=', $id);
-        })->get();
-
-        // $technologies4 = Technology::whereRelation('users', 'technologiable_id', true)->get();
-
-        // $technologies4 = Technology::has('users', function(Builder $query) use(&$id){
-        //     $query->where('technologiable_id', '=', $id);
-        // })->get();
 
         $technologies4 = Technology::whereHas('users', function(Builder $query) use(&$id){
             $query->where('technologiable_id', '=', $id);
         })->get();
 
+        $asociadosArray = [];
+        foreach ($technologies4 as $technology){
+            $asociadosArray[$technology->id] = $technology->name;
+        }
         // dd($technologies4);
 
         $technologies3 = Technology::all();
 
+        // dd($technologies4);
+
         $portfolioDatas = $user->portfolioData()->get();
+        
         // dd($projects->name);
 
         $technologies = $user->technologies()->get();
@@ -49,10 +49,10 @@ class UserController extends Controller
             'projects',
             'user',
             'technologies',
-            'technologies2',
             'technologies3',
             'technologies4',
-            'portfolioDatas'));
+            'portfolioDatas',
+            'asociadosArray'));
 
     }
 

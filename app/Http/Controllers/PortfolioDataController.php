@@ -3,86 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\PortfolioData;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\DataModalRequest as Request;
 
 class PortfolioDataController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(Request $request)
     {
-        //
-        if (true) {
-            dd('hola');
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PortfolioData  $portfolioData
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PortfolioData $portfolioData)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PortfolioData  $portfolioData
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PortfolioData $portfolioData)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PortfolioData  $portfolioData
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PortfolioData $portfolioData)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PortfolioData  $portfolioData
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PortfolioData $portfolioData)
-    {
-        //
+        $data = PortfolioData::find($request->id);
+        // dd($data);        
+        // try {
+            $data->update([
+                'portfolTitle' => $request->portfolTitle,
+                'picture' => $request->picture,
+                'descriptionTitle' => $request->descriptionTitle,
+                'description' => $request->description,
+                'github' => $request->github,
+                'linkedin' => $request->linkedin,
+                'contactEmail' => $request->contactEmail
+            ]);
+            
+            return Redirect::route('user', array(Auth::id()))->with('toast_success', 'Projecto actualizado correctamente');
+        // } catch (\Exception $e) {
+        //     Log::error('message');            
+        //     return redirect()->back()->with('toast_error', 'Error al actualizar <br> Por favor verifica los datos');
+        // }
     }
 }

@@ -55,6 +55,6 @@ class User extends Authenticatable
     }
 }
 
-// TODO:: estylize all site
+// TODO:: checar y hacer validaciones
 // TODO:: agregar ventana para editar datos del usuario
 

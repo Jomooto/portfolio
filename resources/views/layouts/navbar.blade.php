@@ -4,8 +4,7 @@
             <div id="app">
                 <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm fixed-top">
                     <div class="container">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-
+                        <a class="navbar-brand" href="{{ url("/user/{$user->id}") }}">
                             Portfolio
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -21,25 +20,25 @@
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
-                                @guest
+                                    <!-- <li class="nav-item">
+                                        <a href="#home" class="nav-link">Home</a>
+                                    </li> -->
                                     <li class="nav-item">
-                                        <a href="" class="nav-link">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link">About Me</a>
-                                    </li>
-                                    
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link"> Projects</a>
+                                        <a href="#home" class="nav-link">About Me</a>
                                     </li>
                                     
                                     <li class="nav-item">
-                                        <a href="" class="nav-link"> Technologies</a>
+                                        <a href="#projects" class="nav-link"> Projects</a>
                                     </li>
                                     
                                     <li class="nav-item">
-                                        <a href="" class="nav-link"> Contact Me</a>
+                                        <a href="#technologies" class="nav-link"> Technologies</a>
                                     </li>
+                                    
+                                    <li class="nav-item">
+                                        <a href="#contact" class="nav-link"> Contact Me</a>
+                                    </li>
+                                @guest                                   
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
@@ -69,3 +68,10 @@
             </div>
         </div>
     </div>
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>

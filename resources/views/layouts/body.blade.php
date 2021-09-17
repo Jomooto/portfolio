@@ -1,6 +1,8 @@
 @extends('layouts.user')
 
-<body class="container text-center text-light" style="background: linear-gradient(to bottom, #2a2a2a, #134074);">
+<body class="container text-center text-light"
+    style="background: linear-gradient(to bottom, #2a2a2a, #134074);"
+    id="home">
     @section('body')
         @forelse($portfolioDatas as $portfolioData)
             <div class="row">
@@ -13,6 +15,15 @@
                     <p class="h3">{{ $portfolioData->description }}</p>
                 </div>
             </div>
+            @if(Auth::id())
+                        <div class="inline">
+                            <button class="btn btn-warning btn-sm mx-auto my-2" data-toggle="modal" data-target="#editData{{ $portfolioData->id }}">
+                                Editar Datos de Contacto
+                            </button>
+
+                            @include('layouts.editDataModal')
+                        </div>
+            @endif
         @empty
 
         @endforelse
@@ -20,7 +31,7 @@
 
 
     
-    <div class="container">
+    <div class="container" id="projects">
         <div class="row">
             <div class="text-center col-12">
                 <h1>Projects</h1>
@@ -29,9 +40,9 @@
                 <div class="col-md-4 my-5 text-white text-center">
                     <div class="card bg-secondary" style="width:18rem; height:18rem">
                         <h2>{{ $project->name }}</h2> <br>
-                        <a href="{{ url($project->url) }}">Project</a>
+                        <a href="{{ url($project->url) }}" target="_blank">Project</a>
                         
-                        <a href="{{ url($project->git_url)}}"> Git</a>
+                        <a href="{{ url($project->git_url)}}" target="_blank"> Git</a>
                         <img class="rounded mx-auto d-block mt-1" src="{{ $project->picture_url }}" style="width:60%">
 
 <!-- 
@@ -41,18 +52,18 @@
                             @endforeach -->
                         <!-- </div> -->
                         @if(Auth::id())
-                        <div class="inline">
-                        <button class="btn btn-warning btn-sm mx-auto my-2" data-toggle="modal" data-target="#editProject{{ $project->id }}">
-                            Editar
-                        </button>
+                            <div class="inline">
+                                <button class="btn btn-warning btn-sm mx-auto my-2" data-toggle="modal" data-target="#editProject{{ $project->id }}">
+                                    Editar
+                                </button>
 
-                        @include('layouts.editProjectModal')
+                            @include('layouts.editProjectModal')
 
-                        <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal" data-target="#deleteProject{{ $project->id }}">
-                            Delete
-                        </button>                        
-                        @include('layouts.deleteProjectModal')
-                        </div>                       
+                                <button class="btn btn-danger btn-sm mx-auto" data-toggle="modal" data-target="#deleteProject{{ $project->id }}">
+                                    Delete
+                                </button>                        
+                            @include('layouts.deleteProjectModal')
+                            </div>                       
                         @endif
                         
                     </div>
@@ -79,19 +90,26 @@
     <!-- <div class="container">
         <div class="row">
             <div class="col-12"> -->
-                @guest
-                @else
+                
+                @if(Auth::id())
                 <h1 class="pt-5">Technologies Panel</h1>
                     @include('layouts.technologiesTable')
-                @endguest
+                
             <!-- </div>
         </div>
     </div> -->
+            <!-- <div class="mx-auto pb-4 col-12"> -->
+                <button type="button" class="btn btn-primary mx-auto my-4 col-12" data-toggle="modal" data-target="#addTech">
+                    Add Technology
+                </button>
+                @include('layouts.technologiesModal')
+            <!-- </div> -->
+        @endif
     
 
 
     
-        <div class="container">
+        <div class="container" id="technologies">
             <div class="row">
                 <div class="text-center col-12">
                 <h1>Technologies</h1>
@@ -106,15 +124,7 @@
                 </div>
                 @empty
                     <h1> Este usuario no tiene technologies</h1>
-                @endforelse
-                @if(Auth::id())
-                <div class="mx-auto pb-4 col-12">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTech">
-                        Add Technology
-                    </button>
-                    @include('layouts.technologiesModal')
-                </div>
-                @endif
+                @endforelse             
             </div>
         </div>
     
@@ -124,11 +134,11 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <span><i class="fab fa-github fa-3x"></i></span>
-                    <a href="{{ $portfolioData->github }}"><p class="h5">GitHub</p></a>
+                    <a href="{{ $portfolioData->github }}" target="_blank"><p class="h5">GitHub</p></a>
                 </div>
                 <div class="col-12 col-md-6">
                     <span><i class="fab fa-linkedin fa-3x"></i></span>
-                    <a href="{{ $portfolioData->linkedin }}"><p class="h5">Linkedin</p></a>
+                    <a href="{{ $portfolioData->linkedin }} target="_blank""><p class="h5">Linkedin</p></a>
                 </div>
                 <!-- <div class="col-12 col-md-4">
                     <span><i class="fab fa-linkedin"></i></span>

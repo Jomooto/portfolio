@@ -1,12 +1,24 @@
-<!-- Button trigger modal -->
+  <style>            
+      #name::placeholder {
+          color:white;
+      }
+      #icon::placeholder {
+          color:white;
+      }
 
+      .modal-footer {
+        border:none;
+      }
 
-<!-- Modal -->
+      .modal-header {
+        border:none;
+      }
+  </style>
+
 <div class="modal fade" id="addTech" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="modal-content bg-dark">
+      <div class="modal-header">        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,12 +28,11 @@
             @csrf
             <div class="form-row">
             
-            <div class="col-md-3">
-              
-                <input type="text" name="name" class="form-control" placeholder="name" value="{{old('name')}}">
+                <div class="col-md-4">              
+                  <input type="text" id="name" name="name" class="form-control bg-secondary text-white" placeholder="name" value="{{old('name')}}">
                 </div>
-                <div class="col-md-3">
-                    <input type="text" name="icon_url" class="form-control" placeholder="icon_url" value="{{old('icon_url')}}">
+                <div class="col-md-8">
+                    <input type="text" id="icon" name="icon_url" class="form-control bg-secondary text-white" placeholder="icon_url" value="{{old('icon_url')}}">
                 </div>
                 <!-- <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">Guardar</button>
