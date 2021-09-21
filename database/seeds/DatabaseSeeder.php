@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         \App\User::create([
             'name' => 'Jomoto',
             'email' => 'j@admin.com',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('Friends#2021')
         ])->each(function($user){
 
             $user->technologies()->attach($this->array(rand(1,5)));
