@@ -33,7 +33,7 @@
     
     <div class="container" id="projects">
         <div class="row">
-            <div class="text-center col-12">
+            <div class="text-center mt-5 col-12">
                 <h1>Projects</h1>
             </div>
             @forelse($projects as $project)
