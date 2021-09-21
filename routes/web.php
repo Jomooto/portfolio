@@ -1,9 +1,11 @@
 <?php
 
+use App\Mail\ConctactFormMailable;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ConctactFormMailable;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,10 @@ use App\Mail\ConctactFormMailable;
 //Route::get('welcome', function () {
 //    return view('welcome');
 //});
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 'Auth'::routes();
 
