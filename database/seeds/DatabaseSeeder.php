@@ -18,42 +18,48 @@ class DatabaseSeeder extends Seeder
         // factory(App\Project::class, 5)->create();
         // factory(App\PortfolioData::class)->create();
 
-
         \App\User::create([
             'name' => 'Jomoto',
             'email' => 'j@admin.com',
-            'password' => bcrypt('12345678')
-        ])->each(function($user){
+            'password' => bcrypt('Friends#2021')
+        ]);
 
-            $user->technologies()->attach($this->array(rand(1,5)));
 
-            $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+        // \App\User::create([
+        //     'name' => 'Jomoto',
+        //     'email' => 'j@admin.com',
+        //     'password' => bcrypt('12345678')
+        // ])->each(function($user){
 
-            $this->projects($user);
+        //     $user->technologies()->attach($this->array(rand(1,5)));
+
+        //     $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+
+        //     $this->projects($user);
             
             
 
-        });
+        // });
 
-        factory(App\User::class, 3)->create()->each(function($user){
+        // factory(App\User::class, 3)->create()->each(function($user){
 
-            $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+        //     $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
             
-            $projects_rand = rand(1, 5);
-            for($i=1; $i < $projects_rand; $i++){
+        //     $projects_rand = rand(1, 5);
+        //     for($i=1; $i < $projects_rand; $i++){
 
 
-                $this->projects($user);
+        //         $this->projects($user);
             
             
-            }
+        //     }
 
-            $user->technologies()->attach($this->array(rand(1,5)));
+        //     $user->technologies()->attach($this->array(rand(1,5)));
 
             
 
 
-        });
+        // });
 
 
     }
