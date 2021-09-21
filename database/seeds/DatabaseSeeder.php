@@ -18,28 +18,26 @@ class DatabaseSeeder extends Seeder
         // factory(App\Project::class, 5)->create();
         // factory(App\PortfolioData::class)->create();
 
-        // \App\User::create([
-        //     'name' => 'Jomoto',
-        //     'email' => 'j@admin.com',
-        //     'password' => bcrypt('Friends#2021')
-        // ]);
-
-
         \App\User::create([
             'name' => 'Jomoto',
             'email' => 'j@admin.com',
             'password' => bcrypt('Friends#2021')
         ])->each(function($user){
-
-            $user->technologies()->attach($this->array(rand(1,5)));
-
             $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
-
-            $this->projects($user);
-            
-            
-
         });
+
+        // \App\User::create([
+        //     'name' => 'Jomoto',
+        //     'email' => 'j@admin.com',
+        //     'password' => bcrypt('Friends#2021')
+        // ])->each(function($user){
+
+        //     $user->technologies()->attach($this->array(rand(1,5)));
+
+        //     $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
+
+        //     $this->projects($user);
+        // });
 
         // factory(App\User::class, 3)->create()->each(function($user){
 
