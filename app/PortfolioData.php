@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PortfolioData extends Model
 {
     protected $fillable = [
+        'cv',
         'portfolioTitle',
         'picture', 
         'descriptionTitle',

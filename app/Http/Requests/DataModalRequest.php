@@ -24,7 +24,7 @@ class DataModalRequest extends FormRequest
     public function rules()
     {
         return [
-            'portfolTitle' => 'required',
+                'cv' => 'required|url|max:255',
                 'picture' => 'required|url|max:255',
                 'descriptionTitle' => 'required|max:255',
                 'description' => 'required',

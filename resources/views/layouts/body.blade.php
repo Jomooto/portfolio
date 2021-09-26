@@ -9,11 +9,15 @@
                 <div class="col-md-6">
                     <img src="{{ $portfolioData->picture }}" alt="profile picture"
                     style="width: 50%;" class="mx-auto d-block rounded">
+                    <div class="col-12 pt-4"> 
+                        <span><i class="far fa-file fa-3x"></i></span>
+                        <a href="{{ $portfolioData->cv }}" target="_blank"><p class="h5">Resume</p></a>
+                    </div>
                 </div>
                 <div class="col-md-6 pt-4">
                     <h1>{{$portfolioData->descriptionTitle}}</h1>
                     <p class="h3">{{ $portfolioData->description }}</p>
-                </div>
+                </div>               
             </div>
             @if(Auth::id())
                         <div class="inline">
@@ -138,7 +142,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <span><i class="fab fa-linkedin fa-3x"></i></span>
-                    <a href="{{ $portfolioData->linkedin }} target="_blank""><p class="h5">Linkedin</p></a>
+                    <a href="{{ $portfolioData->linkedin }}" target="_blank"><p class="h5">Linkedin</p></a>
                 </div>
                 <!-- <div class="col-12 col-md-4">
                     <span><i class="fab fa-linkedin"></i></span>

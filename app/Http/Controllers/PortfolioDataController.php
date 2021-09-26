@@ -17,8 +17,9 @@ class PortfolioDataController extends Controller
         $data = PortfolioData::find($request->id);
         // dd($data);        
         // try {
+
             $data->update([
-                'portfolTitle' => $request->portfolTitle,
+                'cv' => $request->cv,
                 'picture' => $request->picture,
                 'descriptionTitle' => $request->descriptionTitle,
                 'description' => $request->description,

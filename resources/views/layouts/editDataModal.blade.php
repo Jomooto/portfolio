@@ -39,7 +39,7 @@
                     <div class="form-row">
                                             
                         <div class="col-md-4 pb-2">
-                            <input type="text" id="title" name="portfolTitle" class="form-control bg-secondary text-white" placeholder="Portfolio Title" value="{{ $portfolioData->portfolTitle }}">
+                            <input type="url" id="cv" name="cv" class="form-control bg-secondary text-white" placeholder="Cv link" value="{{ $portfolioData->cv }}">
                         </div>
                         <div class="col-md-4 pb-2">
                             <input type="text" id="picture" name="picture" class="form-control bg-secondary text-white" placeholder="Url Picture" value="{{ $portfolioData->picture }}">
