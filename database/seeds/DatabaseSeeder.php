@@ -14,22 +14,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        factory(App\Technology::class, 5)->create();
+        // factory(App\Technology::class, 5)->create();
         // factory(App\Project::class, 5)->create();
         // factory(App\PortfolioData::class)->create();
 
-        \App\User::create([
-            'name' => 'Jomoto',
-            'email' => 'j@admin.com',
-            'password' => bcrypt('Friends#2021')
-        ])->each(function($user){
-            $user->portfolioData()->save(factory(App\PortfolioData::class)->make());
-        });
+     
 
         // \App\User::create([
         //     'name' => 'Jomoto',
         //     'email' => 'j@admin.com',
-        //     'password' => bcrypt('Friends#2021')
+        //     'password' => bcrypt('12345678')
         // ])->each(function($user){
 
         //     $user->technologies()->attach($this->array(rand(1,5)));
@@ -62,33 +56,33 @@ class DatabaseSeeder extends Seeder
 
     }
 
-    public function array($max){
+    // public function array($max){
 
-        $values = [];
+    //     $values = [];
 
-        for($i=1; $i <= $max; $i++){
-            $values[] = $i;
-        }
+    //     for($i=1; $i <= $max; $i++){
+    //         $values[] = $i;
+    //     }
 
-        return $values;
+    //     return $values;
 
-    }
+    // }
 
 
-    public function projects($user){
-        $user->projects()->save(factory(App\Project::class)->make())
-            ->each(function($project){
+    // public function projects($user){
+    //     $user->projects()->save(factory(App\Project::class)->make())
+    //         ->each(function($project){
 
-                $projects = [];
-                $projects [] = $project->id;
-                // if(in_array($project->id, $projects)){
-                //     return;
-                // }
-                $project->technologies()->attach($this->array(rand(1,5)));
-            }
+    //             $projects = [];
+    //             $projects [] = $project->id;
+    //             // if(in_array($project->id, $projects)){
+    //             //     return;
+    //             // }
+    //             $project->technologies()->attach($this->array(rand(1,5)));
+    //         }
 
             
             
-        );
-    }
+    //     );
+    // }
 }
